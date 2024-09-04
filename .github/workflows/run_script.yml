@@ -1,7 +1,12 @@
-name: Action Warp Generator
+name: Run WARP GENERATOR
 
 on: 
-  workflow_dispatch: # Allows manual run
+  workflow_dispatch:
+    inputs:
+      LIMIT:
+        description: 'Enter how much GBs you want.'
+        required: true
+        default: 10  # You can set a default value here if you want
 
 jobs:
   run-warp-script:
@@ -23,6 +28,5 @@ jobs:
       - name: Run Python script
         env:
           WARP_ID: ${{ secrets.ID }}
-          LIMIT: ${{ secrets.LIMIT }}
-        run: python warp.py
-        
+          LIMIT: ${{ github.event.inputs.LIMIT }}
+        run: python script.py
