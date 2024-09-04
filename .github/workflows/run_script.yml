@@ -29,4 +29,4 @@ jobs:
         env:
           WARP_ID: ${{ secrets.ID }}
           LIMIT: ${{ github.event.inputs.LIMIT }}
-        run: python script.py
+        run: python warp.py
